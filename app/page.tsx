@@ -1,15 +1,20 @@
+import DubaiClouds from "@/public/Clouds";
+
 export default function Home() {
   return (
     <>
       <nav></nav>
       <div className="relative max-w-5xl mx-auto ">
-        <header className="pt-20 sm:pt-24 lg:pt-32">
-          <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white pb-5">
-            Hi, Im suhyun Han
-          </h1>
-          <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
-            A Front-end Developer
-          </h1>
+        <header className="pt-20 sm:pt-24 lg:pt-32 flex align-center justify-center">
+          <div className="my-auto">
+            <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white pb-5">
+              Hi, Im suhyun Han
+            </h1>
+            <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
+              A Front-end Developer
+            </h1>
+          </div>
+          <DubaiClouds />
         </header>
         <section className="pt-20 sm:pt-24 lg:pt-32">
           <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-5">
