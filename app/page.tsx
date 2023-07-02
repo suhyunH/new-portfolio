@@ -1,9 +1,28 @@
+"use client";
 import DubaiClouds from "@/public/Clouds";
+import { useCallback, useRef } from "react";
 
 export default function Home() {
+  const scrollElement = useRef<any[]>([]);
+  const scrollingTop = useCallback(async (index: number) => {
+    const elmnt = scrollElement;
+    if (elmnt?.current) {
+      elmnt?.current[index].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, []);
+
   return (
     <>
-      <nav></nav>
+      <nav className="fixed bg-white dark:bg-gray-900">
+        <ul>
+          <li>me</li>
+          <li onClick={() => scrollingTop(0)}>Skills & Project</li>
+          <li onClick={() => scrollingTop(1)}>Testimonials</li>
+        </ul>
+      </nav>
       <div className="relative max-w-5xl mx-auto ">
         <header className="pt-20 sm:pt-24 lg:pt-32 flex align-center justify-center">
           <div className="my-auto">
@@ -16,7 +35,10 @@ export default function Home() {
           </div>
           <DubaiClouds />
         </header>
-        <section className="pt-20 sm:pt-24 lg:pt-32">
+        <section
+          className="pt-20 sm:pt-24 lg:pt-32"
+          ref={(el) => (scrollElement.current[0] = el)}
+        >
           <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-5">
             Skills & Projects
           </p>
@@ -72,7 +94,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="pt-20 sm:pt-24 lg:pt-32">
+        <section
+          className="pt-20 sm:pt-24 lg:pt-32"
+          ref={(el) => (scrollElement.current[1] = el)}
+        >
           <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-5">
             Testimonials
           </p>
