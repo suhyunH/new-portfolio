@@ -31,13 +31,18 @@ export default function Home() {
                   Development.
                 </p>
               </div>
-              <ul>
-                <li className=" font-extrabold">
-                  TypeScript, Next.js, MUI, REST API, AWS
-                </li>
-                <li>new Career Report</li>
-                <li>B2B strength/career/leadership report</li>
-              </ul>
+              <p className="font-extrabold text-xl">
+                TypeScript, Next.js, MUI, REST API, AWS
+              </p>
+              <div className="mt-6">
+                <p className="font-bold text-xl mb-3">What I Have Done</p>
+                <ul className="ml-3 space-y-2">
+                  <li className=" text-lg">new Career Report</li>
+                  <li className="text-lg">
+                    B2B strength/career/leadership report
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="relative sm:block md:flex">
@@ -47,20 +52,23 @@ export default function Home() {
                 <p className="font-bold text-2xl">Futureplay.co</p>
                 <p className="">Homepage of a VC company called Futureplay.</p>
               </div>
-              <ul>
-                <li className=" font-extrabold">
-                  TypeScript, Next.js, Bootstrap, GraphQL, AWS, wordpress,
-                  Hasura
-                </li>
-                <li>
-                  Website Redesign Project (main, about, culture, investment,
-                  consulting, portfolio, contents, FP Original, locale feature..
-                  etc)
-                </li>
-                <li>Playbook landing page</li>
-                <li>Membership website (canceled)</li>
-                <li>more detail (노션 페이지 이동)</li>
-              </ul>
+              <p className=" font-extrabold text-xl">
+                TypeScript, Next.js, Bootstrap, GraphQL, AWS, wordpress, Hasura
+              </p>
+              <div className="mt-6">
+                <p className="font-bold text-xl mb-3">What I Have Done</p>
+
+                <ul className=" ml-3 space-y-2">
+                  <li className="text-lg">
+                    Website Redesign Project (main, about, culture, investment,
+                    consulting, portfolio, contents, FP Original, locale
+                    feature.. etc)
+                  </li>
+                  <li className="text-lg">Playbook landing page</li>
+                  <li className="text-lg">Membership website (canceled)</li>
+                  <li className="text-lg">more detail (노션 페이지 이동)</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
