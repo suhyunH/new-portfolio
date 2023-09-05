@@ -20,10 +20,6 @@ export default function Home() {
     setMenuOpen(!menuOpen);
   };
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
   return (
     <>
       <nav
@@ -184,6 +180,7 @@ export default function Home() {
                     consulting, portfolio, contents, FP Original, locale
                     feature.. etc)
                   </li>
+                  <li className="text-lg">Design Patterns</li>
                   <li className="text-lg">Playbook landing page</li>
                   <li className="text-lg">Membership website (canceled)</li>
                   <li className="text-lg">more detail (노션 페이지 이동)</li>
