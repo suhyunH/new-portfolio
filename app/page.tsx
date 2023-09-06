@@ -30,7 +30,7 @@ export default function Home() {
             className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
             onClick={() => scrollingTop(0)}
           >
-            me
+            About me
           </div>
           <div
             className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
@@ -43,6 +43,12 @@ export default function Home() {
             onClick={() => scrollingTop(2)}
           >
             Testimonials
+          </div>
+          <div
+            className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
+            onClick={() => scrollingTop(3)}
+          >
+            Contact
           </div>
         </div>
         <div className="flex items-center space-x-4 lg:hidden w-full">
@@ -58,7 +64,7 @@ export default function Home() {
                 className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
                 onClick={() => scrollingTop(0)}
               >
-                me
+                About me
               </div>
               <div
                 className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
@@ -71,6 +77,12 @@ export default function Home() {
                 onClick={() => scrollingTop(2)}
               >
                 Testimonials
+              </div>
+              <div
+                className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
+                onClick={() => scrollingTop(3)}
+              >
+                Contact
               </div>
             </div>
             <button
@@ -114,11 +126,11 @@ export default function Home() {
         </div>
       </nav>
 
-      <div
-        className="max-w-5xl mx-auto"
-        ref={(el) => (scrollElement.current[0] = el)}
-      >
-        <header className="mt-20 sm:mt-24 lg:mt-32 flex flex-col items-center justify-center">
+      <div>
+        <header
+          className="mt-40 sm:mt-48 lg:mt-64 flex flex-col items-center justify-center max-w-5xl mx-auto"
+          ref={(el) => (scrollElement.current[0] = el)}
+        >
           <div className="my-auto text-center">
             <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight dark:text-white pb-2">
               Hi, Im Suhyun Han
@@ -129,15 +141,63 @@ export default function Home() {
           </div>
         </header>
 
+        <section className="border-t border-b border-gray-800 dark:border-white mt-20 sm:mt-24 lg:mt-32 sm:px-10">
+          <h1 className="text-2xl font-semibold  text-gray-800 dark:text-white max-w-5xl mx-auto  py-20 text-justify">
+            I am a junior front-end developer with a diverse set of experiences
+            and unique characteristics. Throughout my development journey, I
+            have cultivated the following traits.
+            <br />
+            <br />
+            One distinctive experience I have had is my ability to facilitate
+            smooth communication between foreign developers and Korean project
+            managers. Overcoming language and cultural barriers to ensure
+            seamless project progression has always been a challenge, but
+            through these experiences, I have honed my problem-solving skills
+            and improved my collaboration abilities.
+            <br />
+            <br />
+            Furthermore, I have gained experience in developing design patterns
+            while working alongside a project manager without a background in
+            design. This allowed me to reduce development, design, and
+            communication time while enhancing the overall quality of our
+            projects. This skill has played a crucial role in improving
+            efficiency.
+            <br />
+            <br />
+            Additionally, I take pride in my ability to rapidly learn new
+            technology stacks and apply them in practical scenarios. I quickly
+            familiarized myself with technologies like GraphQL and Hasura, even
+            when introduced to them for the first time upon joining a project.
+            This has been advantageous in keeping up with the latest
+            technologies and incorporating them into our development processes.
+            <br />
+            <br />
+            Lastly, I possess a user-centric mindset, consistently generating
+            ideas that consider user needs and convenience. These ideas have
+            been successfully implemented in actual projects, contributing to an
+            improved user experience. This perspective is vital in ensuring that
+            the applications I develop maintain a user-centric approach.
+            <br />
+            <br />
+            Based on these experiences and skills, I am confident in my ability
+            to bring value to the team as a front-end developer, contributing to
+            the creation of user-friendly web applications.
+          </h1>
+        </section>
         <section
-          className="pt-20 sm:pt-24 lg:pt-32"
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto"
           ref={(el) => (scrollElement.current[1] = el)}
         >
-          <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-5">
+          <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-10">
             Skills & Projects
           </p>
-          <div className="relative sm:block md:flex mb-8">
-            <Image src="./futureplay.gif" alt="futureplay gif" />
+          <div className="relative sm:block md:flex mb-12">
+            <Image
+              src="/futureplay.gif"
+              alt="futureplay gif"
+              width={500}
+              height={300}
+            />
             <div className="flex-1 p-5">
               <div className="text-center mb-6">
                 <p className="font-bold text-2xl">Tanagement</p>
@@ -161,9 +221,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* 두 번째 프로젝트 정보 추가 */}
           <div className="relative sm:block md:flex mb-8">
-            <div className="w-[400px] h-[500px] bg-slate-600 flex-1 m-auto rounded-lg shadow-md" />
+            <Image
+              src="/futureplay.gif"
+              alt="futureplay gif"
+              width={500}
+              height={300}
+            />
             <div className="flex-1 p-5">
               <div className="text-center mb-6">
                 <p className="font-bold text-2xl">Futureplay.co</p>
@@ -193,10 +257,10 @@ export default function Home() {
         </section>
 
         <section
-          className="pt-20 sm:pt-24 lg:pt-32"
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto mb-[200px]"
           ref={(el) => (scrollElement.current[2] = el)}
         >
-          <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-5">
+          <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-10">
             Testimonials
           </p>
           {[
@@ -223,6 +287,63 @@ export default function Home() {
               </div>
             );
           })}
+        </section>
+        <section
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto mb-[50px] "
+          ref={(el) => (scrollElement.current[3] = el)}
+        >
+          <div className="flex justify-evenly mb-[100px]">
+            <a href="mailto:tngus5280@gmail.com">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className=""
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                />
+              </svg>
+            </a>
+
+            <a href="https://github.com/suhyunH" target="blank">
+              <svg
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className=" fill-slate-900 dark:fill-white"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.463 2 11.97c0 4.404 2.865 8.14 6.839 9.458.5.092.682-.216.682-.48 0-.236-.008-.864-.013-1.695-2.782.602-3.369-1.337-3.369-1.337-.454-1.151-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.027 1.531 1.027.892 1.524 2.341 1.084 2.91.828.092-.643.35-1.083.636-1.332-2.22-.251-4.555-1.107-4.555-4.927 0-1.088.39-1.979 1.029-2.675-.103-.252-.446-1.266.098-2.638 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0 1 12 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.372.202 2.386.1 2.638.64.696 1.028 1.587 1.028 2.675 0 3.83-2.339 4.673-4.566 4.92.359.307.678.915.678 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.48 3.97-1.32 6.833-5.054 6.833-9.458C22 6.463 17.522 2 12 2Z"
+                ></path>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/suhyunH9" target="blank">
+              <svg
+                width="50"
+                height="50"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="fill-slate-900 dark:fill-white"
+              >
+                <path
+                  d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <p className="text-center"> 2023 suhyunHan - All rights reserved </p>
         </section>
       </div>
     </>
