@@ -1,197 +1,157 @@
 "use client";
 import Image from "next/image";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const scrollElement = useRef<any[]>([]);
-  const scrollingTop = useCallback(async (index: number) => {
-    const elmnt = scrollElement;
-    if (elmnt?.current) {
-      elmnt?.current[index].scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+  const [scrolling, setScrolling] = useState<number | null>();
+  const scrollingTop = useCallback(
+    async (index: number) => {
+      const elmnt = scrollElement;
+      if (elmnt?.current) {
+        elmnt?.current[index].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    },
+    [scrollElement]
+  );
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 400;
+
+      const sectionPositions = scrollElement.current.map((el) => {
+        return el.offsetTop;
       });
-    }
-  }, []);
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+      const currentSectionIndex =
+        sectionPositions.filter((el) => el <= scrollY).length - 1;
+      if (scrolling !== currentSectionIndex) {
+        setScrolling(currentSectionIndex);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolling]);
 
   return (
     <>
       <nav
         className={`bg-white dark:bg-gray-900 shadow-lg top-0 fixed w-full flex items-center  justify-end p-4 z-50`}
       >
-        <div className="hidden items-center space-x-12 lg:flex">
-          <div
-            className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
+        <div className="flex items-center space-x-2  overflow-x-scroll">
+          <button
+            className={`lg:text-lg text-sm font-semibold text-gray-800 dark:text-white cursor-pointer px-3 py-1 ${
+              scrolling === 0 && "text-cyan-950"
+            } `}
             onClick={() => scrollingTop(0)}
           >
             About me
-          </div>
-          <div
-            className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
+          </button>
+          <button
+            className={`lg:text-lg text-sm font-semibold text-gray-800 dark:text-white cursor-pointer  px-3 py-1  ${
+              scrolling === 1 && "text-cyan-950"
+            }`}
             onClick={() => scrollingTop(1)}
           >
             Skills & Project
-          </div>
-          <div
-            className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
+          </button>
+          <button
+            className={`lg:text-lg text-sm font-semibold text-gray-800 dark:text-white cursor-pointer  px-3 py-1  ${
+              scrolling === 2 && "text-cyan-950"
+            }`}
             onClick={() => scrollingTop(2)}
           >
             Testimonials
-          </div>
-          <div
-            className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
+          </button>
+          <button
+            className={`lg:text-lg text-sm font-semibold text-gray-800 dark:text-white cursor-pointer  px-3 py-1 ${
+              scrolling === 3 && "text-cyan-950"
+            }`}
             onClick={() => scrollingTop(3)}
           >
             Contact
-          </div>
-        </div>
-        <div className="flex items-center space-x-4 lg:hidden w-full">
-          <div className="cursor-pointer flex justify-between w-full">
-            <div
-              className={`lg:flex lg:items-center transition-transform duration-300 ease-in-out transform ${
-                menuOpen
-                  ? "translate-x-full  visible"
-                  : "translate-x-0 invisible"
-              }`}
-            >
-              <div
-                className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
-                onClick={() => scrollingTop(0)}
-              >
-                About me
-              </div>
-              <div
-                className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
-                onClick={() => scrollingTop(1)}
-              >
-                Skills & Project
-              </div>
-              <div
-                className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
-                onClick={() => scrollingTop(2)}
-              >
-                Testimonials
-              </div>
-              <div
-                className="text-lg font-semibold text-gray-800 dark:text-white cursor-pointer"
-                onClick={() => scrollingTop(3)}
-              >
-                Contact
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={toggleMenu}
-              className="text-2xl text-gray-800 dark:text-white "
-            >
-              {menuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
+          </button>
         </div>
       </nav>
 
-      <div>
-        <header
-          className="mt-40 sm:mt-48 lg:mt-64 flex flex-col items-center justify-center max-w-5xl mx-auto"
-          ref={(el) => (scrollElement.current[0] = el)}
-        >
-          <div className="my-auto text-center">
-            <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight dark:text-white pb-2">
-              Hi, Im Suhyun Han
+      <div className="">
+        <header className=" h-[100vh] sm:py-48 lg:py-64 flex flex-col items-center justify-center max-w-5xl mx-auto animate-fadeIn">
+          <div className="my-auto text-center animate-fadeIn">
+            <h1 className=" font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-black pb-2">
+              Hello,
             </h1>
-            <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight dark:text-white pb-8">
+            <h1 className="font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-black pb-2">
+              I&apos;m <span className=" text-cyan-950">Suhyun Han</span>
+            </h1>
+            <h1 className=" font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-black pb-8">
               A Front-end Developer
             </h1>
           </div>
         </header>
 
-        <section className="border-t border-b border-gray-800 dark:border-white mt-20 sm:mt-24 lg:mt-32 sm:px-10">
-          <h1 className="text-2xl font-semibold  text-gray-800 dark:text-white max-w-5xl mx-auto  py-20 text-justify">
-            I am a junior front-end developer with a diverse set of experiences
-            and unique characteristics. Throughout my development journey, I
-            have cultivated the following traits.
-            <br />
-            <br />
-            One distinctive experience I have had is my ability to facilitate
-            smooth communication between foreign developers and Korean project
-            managers. Overcoming language and cultural barriers to ensure
-            seamless project progression has always been a challenge, but
-            through these experiences, I have honed my problem-solving skills
-            and improved my collaboration abilities.
-            <br />
-            <br />
-            Furthermore, I have gained experience in developing design patterns
-            while working alongside a project manager without a background in
-            design. This allowed me to reduce development, design, and
-            communication time while enhancing the overall quality of our
-            projects. This skill has played a crucial role in improving
-            efficiency.
-            <br />
-            <br />
-            Additionally, I take pride in my ability to rapidly learn new
-            technology stacks and apply them in practical scenarios. I quickly
-            familiarized myself with technologies like GraphQL and Hasura, even
-            when introduced to them for the first time upon joining a project.
-            This has been advantageous in keeping up with the latest
-            technologies and incorporating them into our development processes.
-            <br />
-            <br />
-            Lastly, I possess a user-centric mindset, consistently generating
-            ideas that consider user needs and convenience. These ideas have
-            been successfully implemented in actual projects, contributing to an
-            improved user experience. This perspective is vital in ensuring that
-            the applications I develop maintain a user-centric approach.
-            <br />
-            <br />
-            Based on these experiences and skills, I am confident in my ability
-            to bring value to the team as a front-end developer, contributing to
-            the creation of user-friendly web applications.
-          </h1>
+        <section
+          className="border-t border-b border-gray-800 dark:border-white  pt-20 sm:pt-24 lg:pt-32 px-[20px]"
+          ref={(el) => (scrollElement.current[0] = el)}
+        >
+          <div className="max-w-5xl  mx-auto ">
+            <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-10">
+              About me
+            </p>
+            <h1 className="lg:text-2xl sm:text-lg font-semibold   text-gray-800 dark:text-white max-w-5xl mx-auto  py-20 text-justify">
+              I am a junior front-end developer with a diverse set of
+              experiences and unique characteristics. Throughout my development
+              journey, I have cultivated the following traits.
+              <br />
+              <br />
+              One distinctive experience I have had is my ability to facilitate
+              smooth communication between foreign developers and Korean project
+              managers. Overcoming language and cultural barriers to ensure
+              seamless project progression has always been a challenge, but
+              through these experiences, I have honed my problem-solving skills
+              and improved my collaboration abilities.
+              <br />
+              <br />
+              Furthermore, I have gained experience in developing design
+              patterns while working alongside a project manager without a
+              background in design. This allowed me to reduce development,
+              design, and communication time while enhancing the overall quality
+              of our projects. This skill has played a crucial role in improving
+              efficiency.
+              <br />
+              <br />
+              Additionally, I take pride in my ability to rapidly learn new
+              technology stacks and apply them in practical scenarios. I quickly
+              familiarized myself with technologies like GraphQL and Hasura,
+              even when introduced to them for the first time upon joining a
+              project. This has been advantageous in keeping up with the latest
+              technologies and incorporating them into our development
+              processes.
+              <br />
+              <br />
+              Lastly, I possess a user-centric mindset, consistently generating
+              ideas that consider user needs and convenience. These ideas have
+              been successfully implemented in actual projects, contributing to
+              an improved user experience. This perspective is vital in ensuring
+              that the applications I develop maintain a user-centric approach.
+              <br />
+              <br />
+              Based on these experiences and skills, I am confident in my
+              ability to bring value to the team as a front-end developer,
+              contributing to the creation of user-friendly web applications.
+            </h1>
+          </div>
         </section>
         <section
-          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto"
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto px-[20px]"
           ref={(el) => (scrollElement.current[1] = el)}
         >
           <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-10">
             Skills & Projects
           </p>
-          <div className="relative sm:block md:flex mb-12">
+          <div className="relative sm:block md:flex mb-12 animate-fadeInRight">
             <Image
               src="/futureplay.gif"
               alt="futureplay gif"
@@ -221,7 +181,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="relative sm:block md:flex mb-8">
+          <div className="relative sm:block md:flex mb-8 animate-fadeInRight">
             <Image
               src="/futureplay.gif"
               alt="futureplay gif"
@@ -257,7 +217,7 @@ export default function Home() {
         </section>
 
         <section
-          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto mb-[200px]"
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto px-[20px]"
           ref={(el) => (scrollElement.current[2] = el)}
         >
           <p className="relative text-slate-900 font-bold text-2xl lg:text-5xl tracking-tight text-left dark:text-white pb-10">
@@ -289,7 +249,7 @@ export default function Home() {
           })}
         </section>
         <section
-          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto mb-[50px] "
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto mb-[200px] mt-[200px] "
           ref={(el) => (scrollElement.current[3] = el)}
         >
           <div className="flex justify-evenly mb-[100px]">
