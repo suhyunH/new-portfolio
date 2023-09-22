@@ -1,8 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import DotDivider from "./components/DotDivider";
+import SectionTitle from "./components/SectionTitle";
+import NavItem from "./components/navItem";
 
 export default function Home() {
+  const navItems = ["About", "Projects", "Testimonials", "Contact"];
   const scrollElement = useRef<any[]>([]);
   const [scrolling, setScrolling] = useState<number | null>();
   const scrollingTop = useCallback(
@@ -41,51 +45,28 @@ export default function Home() {
         className={`bg-white  top-0 fixed w-full flex items-center  justify-center sm:justify-end p-4 z-50 `}
       >
         <div className="flex items-center space-x-2  overflow-x-scroll">
-          <button
-            className={`sm:text-base text-sm font-semibold text-gray-800  cursor-pointer px-2 lg:px-3 py-1 hover:text-[#2978b5]  ${
-              scrolling === 0 && "text-[#2978b5]"
-            } `}
-            onClick={() => scrollingTop(0)}
-          >
-            About
-          </button>
-          <button
-            className={`sm:text-base text-sm font-semibold text-gray-800  cursor-pointer px-2 lg:px-3 py-1 hover:text-[#2978b5]  ${
-              scrolling === 1 && "text-[#2978b5]"
-            }`}
-            onClick={() => scrollingTop(1)}
-          >
-            Projects
-          </button>
-          <button
-            className={`sm:text-base text-sm font-semibold text-gray-800 cursor-pointer  px-2 lg:px-3 py-1 hover:text-[#2978b5]  ${
-              scrolling === 2 && "text-[#2978b5]"
-            }`}
-            onClick={() => scrollingTop(2)}
-          >
-            Testimonials
-          </button>
-          <button
-            className={`sm:text-base text-sm font-semibold text-gray-800 dark:text-white cursor-pointer px-2 lg:px-3 py-1 hover:text-[#2978b5] ${
-              scrolling === 3 && "text-[#2978b5]"
-            }`}
-            onClick={() => scrollingTop(3)}
-          >
-            Contact
-          </button>
+          {navItems.map((navItem, index) => (
+            <NavItem
+              key={index}
+              scrolling={scrolling}
+              navItem={navItem}
+              number={index}
+              scrollingTop={scrollingTop}
+            />
+          ))}
         </div>
       </nav>
 
       <section>
-        <header className=" h-[100vh] sm:py-48 lg:py-64 flex flex-col items-center justify-center max-w-5xl mx-auto animate-fadeIn">
+        <header className="h-[100vh] sm:py-48 lg:py-64 flex flex-col items-center justify-center max-w-5xl mx-auto animate-fadeIn">
           <div className="my-auto text-center animate-fadeIn space-y-2">
-            <h1 className="font-semibold text-3xl sm:text-5xl lg:text-6xl tracking-tight  text-black pb-2">
+            <h1 className="font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-tight  text-black pb-2">
               Hello,
             </h1>
-            <h1 className="font-semibold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-black pb-2">
+            <h1 className="font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-tight text-black pb-2">
               I&apos;m <span className=" text-[#2978b5]">Suhyun Han</span>
             </h1>
-            <h1 className=" font-semibold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-black pb-8">
+            <h1 className=" font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-tight text-black pb-8">
               A Front-End Developer
             </h1>
             <div className="flex justify-center lg:space-x-20 space-x-5 mt-10">
@@ -111,27 +92,21 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <div className="flex space-x-3 mx-auto justify-center">
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-        </div>
+        <DotDivider />
         <section
-          className="py-20 sm:py-24 lg:py-32 px-[20px]"
+          className="py-20 sm:py-24 lg:py-32 px-[20px] "
           ref={(el) => (scrollElement.current[0] = el)}
         >
-          <div className="max-w-5xl  mx-auto ">
-            <p className="relative text-slate-900 font-bold text-2xl lg:text-3xl tracking-tight text-left dark:text-white pb-10">
-              About me
-            </p>
-            <h1 className="lg:text-xl sm:text-lg  text-gray-800 dark:text-white max-w-5xl mx-auto text-justify">
+          <div className="max-w-3xl  mx-auto ">
+            <SectionTitle title="About me" />
+            <h1 className="lg:text-lg sm:text-xl  text-gray-800  max-w-5xl mx-auto text-justify">
               I am a junior front-end developer with a diverse set of
               experiences and unique characteristics. Throughout my development
               journey, I have cultivated the following traits.
               <br />
               <br />
               <br />
-              <p className=" font-bold">First, I actively promote ideas.</p>
+              <p className="font-bold">First, I actively suggest ideas.</p>
               <br />
               when i took over futureplay homepage, there was no desinger and
               someone who had similar background knowledge. while working
@@ -201,42 +176,36 @@ export default function Home() {
             </h1>
           </div>
         </section>
-        <div className="flex space-x-3 mx-auto justify-center">
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-        </div>
+        <DotDivider />
         <section
-          className="py-20 sm:py-24 lg:py-32 max-w-5xl mx-auto px-[20px]"
+          className="py-20 sm:py-24 lg:py-32 max-w-3xl mx-auto px-[20px]"
           ref={(el) => (scrollElement.current[1] = el)}
         >
-          <p className="relative text-slate-900 font-bold text-2xl lg:text-3xl tracking-tight text-left dark:text-white pb-10">
-            Projects
-          </p>
+          <SectionTitle title="Projects" />
           <div className="relative sm:block md:flex mb-12 animate-fadeInRight">
             <Image
               src="/futureplay.gif"
               alt="futureplay gif"
-              width={500}
+              width={300}
               height={300}
             />
             <div className="flex-1 p-5">
               <div className="text-center mb-6">
-                <p className="font-bold text-2xl">Tanagement</p>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="font-bold text-xl">Tanagement</p>
+                <p className="text-gray-600 ">
                   Discover Talents and Develop Them into Strengths with Career
                   Development Service Tool that Help people in Software
                   Development.
                 </p>
               </div>
-              <p className="font-extrabold text-xl">
+              <p className="font-extrabold text-lg">
                 TypeScript, Next.js, MUI, REST API, AWS
               </p>
               <div className="mt-6">
-                <p className="font-bold text-xl mb-3">What I Have Done</p>
-                <ul className="ml-4 list-disc text-gray-600 dark:text-gray-300">
-                  <li className="text-lg">New Career Report</li>
-                  <li className="text-lg">
+                <p className="font-bold text-lg mb-3">What I Have Done</p>
+                <ul className="ml-4 list-disc text-gray-600 ">
+                  <li className="text-base">New Career Report</li>
+                  <li className="text-base">
                     B2B Strength/Career/Leadership Report
                   </li>
                 </ul>
@@ -247,13 +216,13 @@ export default function Home() {
             <Image
               src="/futureplay.gif"
               alt="futureplay gif"
-              width={500}
+              width={300}
               height={300}
             />
             <div className="flex-1 p-5">
               <div className="text-center mb-6">
                 <p className="font-bold text-2xl">Futureplay.co</p>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 ">
                   Homepage of a VC company called Futureplay.
                 </p>
               </div>
@@ -261,34 +230,28 @@ export default function Home() {
                 TypeScript, Next.js, Bootstrap, GraphQL, AWS, wordpress, Hasura
               </p>
               <div className="mt-6">
-                <p className="font-bold text-xl mb-3">What I Have Done</p>
-                <ul className="ml-4 list-disc text-gray-600 dark:text-gray-300">
-                  <li className="text-lg">
+                <p className="font-bold text-lg mb-3">What I Have Done</p>
+                <ul className="ml-4 list-disc text-gray-600 ">
+                  <li className="text-base">
                     Website Redesign Project (main, about, culture, investment,
                     consulting, portfolio, contents, FP Original, locale
                     feature.. etc)
                   </li>
-                  <li className="text-lg">Design Patterns</li>
-                  <li className="text-lg">Playbook landing page</li>
-                  <li className="text-lg">Membership website (canceled)</li>
-                  <li className="text-lg">more detail (노션 페이지 이동)</li>
+                  <li className="text-base">Design Patterns</li>
+                  <li className="text-base">Playbook landing page</li>
+                  <li className="text-base">Membership website (canceled)</li>
+                  <li className="text-base">more detail (노션 페이지 이동)</li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
-        <div className="flex space-x-3 mx-auto justify-center">
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-          <div className=" rounded-[50px] w-4 h-4  border-[2px] lg:border-[3px] border-gray-600" />
-        </div>
+        <DotDivider />
         <section
-          className="pt-20 sm:pt-24 lg:pt-32 max-w-5xl mx-auto px-[20px]"
+          className="pt-20 sm:pt-24 lg:pt-32 max-w-3xl mx-auto px-[20px]"
           ref={(el) => (scrollElement.current[2] = el)}
         >
-          <p className="relative text-slate-900 font-bold text-2xl lg:text-3xl tracking-tight text-left dark:text-white pb-10">
-            Testimonials
-          </p>
+          <SectionTitle title="Testimonials" />
           {[
             "What you have to do with your mind, when your body is miserable, is to make it think of something else.",
             "What you have to do with your mind, when your body is miserable, is to make it think of something else.",
@@ -304,7 +267,7 @@ export default function Home() {
               >
                 <div className="border rounded-full w-20 h-20 bg-slate-700" />
                 <h1
-                  className={`text-slate-900 text-lg sm:text-base lg:text-2xl tracking-tight dark:text-white ${
+                  className={`text-slate-900 text-base sm:text-sm lg:text-lg tracking-tight  ${
                     reverseOrder ? "mr-6 text-right" : "ml-6 text-left"
                   }`}
                 >
@@ -344,11 +307,11 @@ export default function Home() {
                 height="50"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
-                className=" fill-slate-900 dark:fill-white"
+                className=" fill-slate-900 "
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M12 2C6.477 2 2 6.463 2 11.97c0 4.404 2.865 8.14 6.839 9.458.5.092.682-.216.682-.48 0-.236-.008-.864-.013-1.695-2.782.602-3.369-1.337-3.369-1.337-.454-1.151-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.027 1.531 1.027.892 1.524 2.341 1.084 2.91.828.092-.643.35-1.083.636-1.332-2.22-.251-4.555-1.107-4.555-4.927 0-1.088.39-1.979 1.029-2.675-.103-.252-.446-1.266.098-2.638 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0 1 12 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.372.202 2.386.1 2.638.64.696 1.028 1.587 1.028 2.675 0 3.83-2.339 4.673-4.566 4.92.359.307.678.915.678 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.48 3.97-1.32 6.833-5.054 6.833-9.458C22 6.463 17.522 2 12 2Z"
                 ></path>
               </svg>
@@ -360,7 +323,7 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="fill-slate-900 dark:fill-white"
+                className="fill-slate-900 "
               >
                 <path
                   d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z"
