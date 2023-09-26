@@ -15,18 +15,23 @@ module.exports = {
           "linear-gradient(90deg, #1c1566 0%, #047de7 50%,  #1c1566 100%)",
       },
       keyframes: {
-        fadeIn: {
+        fadeInDown: {
           "0%": { opacity: 0, transform: "translateY(-20px)" },
           "100%": { opacity: 1, transform: "translateY(0px)" },
         },
         fadeInRight: {
-          "0%": { opacity: 0, transform: "translateX(30px)" },
+          "0%": { opacity: 0, transform: "translateX(100px)" },
           "100%": { opacity: 1, transform: "translateX(0px)" },
+        },
+        fadeInBottom: {
+          "0%": { opacity: 0, transform: "translateY(30px)" },
+          "100%": { opacity: 1, transform: "translateY(0px)" },
         },
       },
       animation: {
-        fadeIn: "fadeIn 2s ease-in-out",
-        fadeInRight: "fadeInRight 2s ease-in-out",
+        fadeInDown: "fadeInDown 2s ease-in-out",
+        fadeInRight: "fadeInRight 1s ease-in",
+        fadeInBottom: "fadeInBottom 1s ease-in-out",
       },
     },
   },
