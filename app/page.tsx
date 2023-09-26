@@ -3,7 +3,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import DotDivider from "./components/DotDivider";
 import SectionTitle from "./components/SectionTitle";
-import NavItem from "./components/navItem";
+import NavItem from "./components/NavItem";
+import { Testimonial } from "./constants/testimonial";
 
 export default function Home() {
   const navItems = ["About", "Projects", "Testimonials", "Contact"];
@@ -44,7 +45,7 @@ export default function Home() {
       <nav
         className={`bg-white  top-0 fixed w-full flex items-center  justify-center sm:justify-end p-4 z-50 `}
       >
-        <div className="flex items-center space-x-2  overflow-x-scroll">
+        <div className="flex items-center space-x-2">
           {navItems.map((navItem, index) => (
             <NavItem
               key={index}
@@ -58,8 +59,8 @@ export default function Home() {
       </nav>
 
       <section>
-        <header className="h-[100vh] sm:py-48 lg:py-64 flex flex-col items-center justify-center max-w-5xl mx-auto animate-fadeIn">
-          <div className="my-auto text-center animate-fadeIn space-y-2">
+        <header className="h-[100vh] sm:py-48 lg:py-64 flex flex-col items-center justify-center max-w-5xl mx-auto animate-fadeInDown">
+          <div className="my-auto text-center animate-fadeInDown space-y-2">
             <h1 className="font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-tight  text-black pb-2">
               Hello,
             </h1>
@@ -182,15 +183,20 @@ export default function Home() {
           ref={(el) => (scrollElement.current[1] = el)}
         >
           <SectionTitle title="Projects" />
-          <div className="relative sm:block md:flex mb-12 animate-fadeInRight">
+          <div
+            className={`relative block mb-12 ${
+              scrolling === 1 && "animate-fadeInBottom"
+            }`}
+          >
             <Image
               src="/futureplay.gif"
               alt="futureplay gif"
               width={300}
               height={300}
+              className="mx-auto"
             />
             <div className="flex-1 p-5">
-              <div className="text-center mb-6">
+              <div className="text-center my-6">
                 <p className="font-bold text-xl">Tanagement</p>
                 <p className="text-gray-600 ">
                   Discover Talents and Develop Them into Strengths with Career
@@ -198,12 +204,15 @@ export default function Home() {
                   Development.
                 </p>
               </div>
-              <p className="font-extrabold text-lg">
+              <p className="font-extrabold text-lg text-[#2978b5] text-center">
                 TypeScript, Next.js, MUI, REST API, AWS
               </p>
               <div className="mt-6">
                 <p className="font-bold text-lg mb-3">What I Have Done</p>
                 <ul className="ml-4 list-disc text-gray-600 ">
+                  <li className="text-base">Mobile Sign in & Sign up</li>
+                  <li className="text-base">Combine Test Introduction</li>
+                  <li className="text-base">Date Select Form for each test</li>
                   <li className="text-base">New Career Report</li>
                   <li className="text-base">
                     B2B Strength/Career/Leadership Report
@@ -212,21 +221,26 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="relative sm:block md:flex animate-fadeInRight">
+          <div
+            className={`relative block mb-12 ${
+              scrolling === 1 && "animate-fadeInBottom"
+            }`}
+          >
             <Image
               src="/futureplay.gif"
               alt="futureplay gif"
-              width={300}
-              height={300}
+              width={500}
+              height={400}
+              className="mx-auto"
             />
             <div className="flex-1 p-5">
-              <div className="text-center mb-6">
+              <div className="text-center my-6">
                 <p className="font-bold text-2xl">Futureplay.co</p>
                 <p className="text-gray-600 ">
                   Homepage of a VC company called Futureplay.
                 </p>
               </div>
-              <p className="font-extrabold text-xl">
+              <p className="font-extrabold text-xl text-[#2978b5] text-center">
                 TypeScript, Next.js, Bootstrap, GraphQL, AWS, wordpress, Hasura
               </p>
               <div className="mt-6">
@@ -240,7 +254,6 @@ export default function Home() {
                   <li className="text-base">Design Patterns</li>
                   <li className="text-base">Playbook landing page</li>
                   <li className="text-base">Membership website (canceled)</li>
-                  <li className="text-base">more detail (노션 페이지 이동)</li>
                 </ul>
               </div>
             </div>
@@ -252,27 +265,22 @@ export default function Home() {
           ref={(el) => (scrollElement.current[2] = el)}
         >
           <SectionTitle title="Testimonials" />
-          {[
-            "What you have to do with your mind, when your body is miserable, is to make it think of something else.",
-            "What you have to do with your mind, when your body is miserable, is to make it think of something else.",
-            "What you have to do with your mind, when your body is miserable, is to make it think of something else.",
-          ].map((item, index) => {
-            const reverseOrder = index === 1;
+          {Testimonial.map((item, index) => {
             return (
               <div
-                className={`border border-slate-300 rounded-lg p-6 mb-6 hover:shadow-md flex mx-3 ${
-                  reverseOrder ? "flex-row-reverse" : "flex-row"
-                }`}
+                className="border border-slate-300 rounded-lg p-6 mb-6 hover:shadow-md flex mx-3 flex-row"
                 key={index}
               >
-                <div className="border rounded-full w-20 h-20 bg-slate-700" />
-                <h1
-                  className={`text-slate-900 text-base sm:text-sm lg:text-lg tracking-tight  ${
-                    reverseOrder ? "mr-6 text-right" : "ml-6 text-left"
-                  }`}
-                >
-                  {item}
-                </h1>
+                <div className="border rounded-full w-2 h-20 bg-slate-700 mt-1" />
+                <div className="w-[95%]">
+                  <h1 className="text-slate-900 text-base sm:text-sm lg:text-lg tracking-tight ml-6  text-justify">
+                    {item.testimonial}
+                  </h1>
+                  <br />
+                  <h1 className="ml-6">
+                    - {item.name} ({item.position})
+                  </h1>
+                </div>
               </div>
             );
           })}
