@@ -188,6 +188,7 @@ export default function Home() {
               width={500}
               height={400}
               className="mx-auto"
+              priority
             />
             <div className="flex-1 p-5">
               <div className="text-center my-6">
