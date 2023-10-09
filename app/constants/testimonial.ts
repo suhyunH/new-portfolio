@@ -1,5 +1,11 @@
 export const Testimonial = [
   {
+    name: "Thomas Mathew",
+    position: "Software Engineer",
+    testimonial:
+      "Suhyun is an experienced, talented web developer, but more than that she understands where web development sits within the whole scheme of a company or project. She worked tirelessly and singlehandedly on the development of the company's main homepage. Her purposefulness helped her to achieve the perfect experience for our users. She is also quite talented in providing alternative solutions in web development. She was truly a pleasure to work with and had great team chemistry.",
+  },
+  {
     name: "Regis Bafutwabo",
     position: "Software Engineer",
     testimonial:
