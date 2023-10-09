@@ -1,10 +1,11 @@
-"use client";
+"use client"; //this is all client components
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import DotDivider from "./components/DotDivider";
 import SectionTitle from "./components/SectionTitle";
 import NavItem from "./components/NavItem";
 import { Testimonial } from "./constants/testimonial";
+import { Project } from "./constants/project";
 
 export default function Home() {
   const navItems = ["About", "Projects", "Testimonials", "Contact"];
@@ -183,81 +184,36 @@ export default function Home() {
           ref={(el) => (scrollElement.current[1] = el)}
         >
           <SectionTitle title="Projects" />
-          <div
-            className={`relative block mb-12 ${
-              scrolling === 1 && "animate-fadeInBottom"
-            }`}
-          >
-            <Image
-              src="/futureplay.gif"
-              alt="futureplay gif"
-              width={300}
-              height={300}
-              className="mx-auto"
-            />
-            <div className="flex-1 p-5">
-              <div className="text-center my-6">
-                <p className="font-bold text-xl">Tanagement</p>
-                <p className="text-gray-600 ">
-                  Discover Talents and Develop Them into Strengths with Career
-                  Development Service Tool that Help people in Software
-                  Development.
+          {Project.map((item) => (
+            <div className="relative block mb-12" key={item.name}>
+              <Image
+                src={item.imageSrc}
+                alt={item.imageAlt}
+                width={500}
+                height={400}
+                className="mx-auto"
+              />
+              <div className="flex-1 p-5">
+                <div className="text-center my-6">
+                  <p className="font-bold text-2xl">{item.name}</p>
+                  <p className="text-gray-600 ">{item.description}</p>
+                </div>
+                <p className="font-extrabold text-xl text-[#2978b5] text-center">
+                  {item.stack}
                 </p>
-              </div>
-              <p className="font-extrabold text-lg text-[#2978b5] text-center">
-                TypeScript, Next.js, MUI, REST API, AWS
-              </p>
-              <div className="mt-6">
-                <p className="font-bold text-lg mb-3">What I Have Done</p>
-                <ul className="ml-4 list-disc text-gray-600 ">
-                  <li className="text-base">Mobile Sign in & Sign up</li>
-                  <li className="text-base">Combine Test Introduction</li>
-                  <li className="text-base">Date Select Form for each test</li>
-                  <li className="text-base">New Career Report</li>
-                  <li className="text-base">
-                    B2B Strength/Career/Leadership Report
-                  </li>
-                </ul>
+                <div className="mt-6">
+                  <p className="font-bold text-lg mb-3">What I Have Done</p>
+                  <ul className="ml-4 list-disc text-gray-600 ">
+                    {item.list.map((list, index) => (
+                      <li className="text-base" key={index}>
+                        {list}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`relative block mb-12 ${
-              scrolling === 1 && "animate-fadeInBottom"
-            }`}
-          >
-            <Image
-              src="/futureplay.gif"
-              alt="futureplay gif"
-              width={500}
-              height={400}
-              className="mx-auto"
-            />
-            <div className="flex-1 p-5">
-              <div className="text-center my-6">
-                <p className="font-bold text-2xl">Futureplay.co</p>
-                <p className="text-gray-600 ">
-                  Homepage of a VC company called Futureplay.
-                </p>
-              </div>
-              <p className="font-extrabold text-xl text-[#2978b5] text-center">
-                TypeScript, Next.js, Bootstrap, GraphQL, AWS, wordpress, Hasura
-              </p>
-              <div className="mt-6">
-                <p className="font-bold text-lg mb-3">What I Have Done</p>
-                <ul className="ml-4 list-disc text-gray-600 ">
-                  <li className="text-base">
-                    Website Redesign Project (main, about, culture, investment,
-                    consulting, portfolio, contents, FP Original, locale
-                    feature.. etc)
-                  </li>
-                  <li className="text-base">Design Patterns</li>
-                  <li className="text-base">Playbook landing page</li>
-                  <li className="text-base">Membership website (canceled)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          ))}
         </section>
         <DotDivider />
         <section
