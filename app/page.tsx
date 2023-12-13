@@ -180,25 +180,18 @@ export default function Home() {
         ref={(el) => (scrollElement.current[1] = el)}
       >
         <SectionTitle title="Projects" />
-        {Project.map((item) => (
-          <div className="relative block mb-12" key={item.name}>
-            <Image
-              src={item.imageSrc}
-              alt={item.imageAlt}
-              width={500}
-              height={400}
-              className="mx-auto"
-              priority
-            />
-            <div className="flex-1 p-5">
-              <div className="text-center my-6">
-                <p className="font-bold text-2xl">{item.name}</p>
-                <p className="text-gray-600 ">{item.description}</p>
-              </div>
-              <p className="font-extrabold text-xl text-[#2978b5] text-center">
-                {item.stack}
-              </p>
-              <div className="mt-6">
+        <div className="grid gap-12 md:gap-20 ">
+          {Project.map((item) => (
+            <div className="relative block" key={item.name}>
+              <div className="flex-1 p-5">
+                <div className="text-center">
+                  <p className="font-bold text-2xl">{item.name}</p>
+                  <p className="text-gray-600 pt-4">{item.description}</p>
+                </div>
+                <p className="font-extrabold text-xl text-[#2978b5] text-center py-4">
+                  {item.stack}
+                </p>
+                {/* <div className="mt-6">
                 <p className="font-bold text-lg mb-3">What I Have Done</p>
                 <ul className="ml-4 list-disc text-gray-600 ">
                   {item.list.map((list, index) => (
@@ -207,10 +200,19 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+              </div> */}
               </div>
+              <Image
+                src={item.imageSrc}
+                alt={item.imageAlt}
+                width={500}
+                height={400}
+                className="mx-auto"
+                priority
+              />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
       <DotDivider />
       <section
