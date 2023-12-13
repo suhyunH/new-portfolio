@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    minimumCacheTTL: 3153600,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
