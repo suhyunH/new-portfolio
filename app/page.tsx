@@ -1,11 +1,11 @@
 "use client"; //this is all client components
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import DotDivider from "./components/DotDivider";
-import SectionTitle from "./components/SectionTitle";
-import NavItem from "./components/NavItem";
-import { Testimonial } from "./constants/testimonial";
-import { Project } from "./constants/project";
+import DotDivider from "../components/DotDivider";
+import SectionTitle from "../components/SectionTitle";
+import NavItem from "../components/NavItem";
+import { Testimonial } from "../constants/testimonial";
+import { Project } from "../constants/project";
 
 export default function Home() {
   const navItems = ["About", "Projects", "Testimonials", "Contact"];
