@@ -99,7 +99,7 @@ export default function Home() {
         ref={(el) => (scrollElement.current[0] = el)}
       >
         <div className="max-w-3xl  mx-auto ">
-          <SectionTitle title="About me" />
+          <SectionTitle title="About me 👋" />
           <h1 className="lg:text-lg sm:text-xl  text-gray-800  max-w-5xl mx-auto text-justify">
             Hi, I&apos;m Suhyun Han, a second-year front-end developer.
             <br />
@@ -155,7 +155,7 @@ export default function Home() {
         className="py-20 sm:py-24 lg:py-32 max-w-3xl mx-auto px-[20px]"
         ref={(el) => (scrollElement.current[1] = el)}
       >
-        <SectionTitle title="Projects" />
+        <SectionTitle title="Projects 🗂" />
         <div className="grid gap-12 md:gap-20 ">
           {Project.map((item) => (
             <div className="relative block" key={item.name}>
@@ -195,7 +195,7 @@ export default function Home() {
         className="pt-20 sm:pt-24 lg:pt-32 max-w-3xl mx-auto px-[20px]"
         ref={(el) => (scrollElement.current[2] = el)}
       >
-        <SectionTitle title="Testimonials" />
+        <SectionTitle title="Testimonials 📝" />
         {Testimonial.map((item, index) => {
           return (
             <div
