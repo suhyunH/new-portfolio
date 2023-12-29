@@ -101,64 +101,40 @@ export default function Home() {
         <div className="max-w-3xl  mx-auto ">
           <SectionTitle title="About me" />
           <h1 className="lg:text-lg sm:text-xl  text-gray-800  max-w-5xl mx-auto text-justify">
-            I am a junior front-end developer with a diverse set of experiences
-            and unique characteristics. Throughout my development journey, I
-            have cultivated the following traits.
+            Hi, I&apos;m Suhyun Han, a second-year front-end developer.
             <br />
             <br />
+            At the first company I joined as an intern, I was in charge of
+            front-end development for the main website renewal project. I
+            devised a design pattern to facilitate communication with the CM who
+            was in charge of design and prevent development confusion, and was
+            recognized for my fast work speed and active problem-solving skills,
+            so I was hired as a full-time employee just two months after
+            joining.
             <br />
-            <p className="font-bold">First, I actively suggest ideas.</p>
-            <br />
-            when i took over futureplay homepage, there was no desinger and
-            someone who had similar background knowledge. while working
-            alongside a project manager without a background in design. i felt
-            the need to create design pattern to communicate easier with her. so
-            i showed her every example of design patter to help her understand
-            what it is and built it together. Now every developer can not only
-            understand the style of it quickly but also modify easily.
-            <br />
-            <br />
-            <br />
-            <p className=" font-bold">
-              Secondly, I have facilitated smooth communication between foreign
-              developers and Korean project managers.
-            </p>
-            <br />
-            I have worked with foreign developers whose native language is not
-            korean. So that, During project implementations, I have taken the
-            initiative to check if foreign developers might have overlooked any
-            aspects and proactively communicated them. Furthermore, I have made
-            efforts to translate and convey minor company-related issues during
-            meetings to ensure they are not left out or isolated. but through
-            these experiences, I have improved my collaboration abilities.
+            <br />I quickly learned{" "}
+            <strong>wordpress, GraphQL, and Hasura </strong> and was responsible
+            for the development of the entire website, including backend work. I
+            worked on bounce rate improvement and refactoring based on GA
+            analysis, and code improvements such as adapter implementation.
             <br />
             <br />
-            <br />
-            <p className="font-bold">
-              Additionally, I love to learn new technology stacks and apply them
-              in practical scenarios.
-            </p>
-            <br />
-            I quickly familiarized myself with technologies like GraphQL and
-            Hasura, even when introduced to them for the first time upon joining
-            a project. This has been advantageous in keeping up with the latest
-            technologies and incorporating them into our development processes.
+            In the second half of 2022, I participated in a rebranding project
+            from the planning stage, improving my communication skills with
+            non-developer team members. Based on this experience, in the project
+            I joined in 2023, I improved my communication with PMs through
+            accurate sharing.
             <br />
             <br />
+            Lastly, as a non-major, I am constantly learning and striving to
+            improve my skills, including enrolling in an University to acquire
+            CS knowledge.
             <br />
-            <p className="font-bold ">
-              Lastly, I possess a user-centric mindset, consistently generating
-              ideas that consider user needs and convenience.
-            </p>
             <br />
-            These ideas have been successfully implemented in actual projects,
-            contributing to an improved user experience. This perspective is
-            vital in ensuring that the applications I develop maintain a
-            user-centric approach. Based on these experiences and skills, I am
-            confident in my ability to bring value to the team as a front-end
-            developer, contributing to the creation of user-friendly web
-            applications.
-            <br />
+            Based on these experiences and efforts, I will do my best to create
+            better results and achieve the company&apos;s goals. If we work
+            together, I am confident that I will be able to contribute to the
+            project through smooth collaboration with the team members.
             <br />
             <br />
             If you think i am the right person to work with or have any
